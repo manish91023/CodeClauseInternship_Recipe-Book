@@ -33,7 +33,7 @@ const Authantication = () => {
       e.preventDefault();
 
       try {
-        const response= await axios.post('http://localhost:3000/register',userData)
+        const response= await axios.post('https://recipe-book-ivt5.onrender.com/register',userData)
         .then(res=>{
           console.log(res.data)
           setName('')
@@ -61,7 +61,7 @@ const Authantication = () => {
         e.preventDefault();
 
         try {
-          const response= await axios.post('http://localhost:3000/login',logData,{withCredentials:true});
+          const response= await axios.post('https://recipe-book-ivt5.onrender.com/login',logData,{withCredentials:true});
                 // Store the token in a cookie or local storage
           setCookies('access_token',response.data.token)
           window.localStorage.setItem("userId",response.data.userId)

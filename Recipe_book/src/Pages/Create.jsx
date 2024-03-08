@@ -71,7 +71,7 @@ const Create = () => {
     }
     setLoading(true)
     try {
-      const createRes= await axios.post('http://localhost:3000/recipe',RecipeData)
+      const createRes= await axios.post('https://recipe-book-ivt5.onrender.com/recipe',RecipeData)
       .then(res=>{
         console.log(res.data);
         setImageUrl('')

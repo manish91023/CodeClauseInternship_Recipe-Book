@@ -10,7 +10,7 @@ const SingleRecipe = () => {
     useEffect(()=>{
         setLoading(true)
         const fetchData = async(id)=>{
-            const response= await Axios.get(`http://localhost:3000/recipe/${id}`);
+            const response= await Axios.get(`https://recipe-book-ivt5.onrender.com/recipe/${id}`);
             console.log(response.data)
             setMealData(response.data)
             setLoading(false)
@@ -31,7 +31,7 @@ const deletRecipe = async(e)=>{
         return ;
     }
     try {
-        const response = await Axios.delete(`http://localhost:3000/recipe/${id}`);
+        const response = await Axios.delete(`https://recipe-book-ivt5.onrender.com/recipe/${id}`);
         alert("Recipe Deleted thanks!")
         navigate('/recipe/home')
         console.log(response)
@@ -44,7 +44,7 @@ const deletRecipe = async(e)=>{
 }
 
         if(loading){
-            return <h1 className=' text-center my-20'>Deleting....</h1>
+            return <h1 className=' text-center my-20'>processing please wait....</h1>
         }
   return (
     <div className='w-[100%] m-h-[100vh] cursor-pointer bg-gradient-to-r from-violet-200 to-indigo-600 md:flex flex-col justify-center overflow-auto'>

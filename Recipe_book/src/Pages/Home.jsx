@@ -15,7 +15,7 @@ const Home = () => {
       try {
         setLoading(true)
         setError(null)
-         const response = await axios.get('http://localhost:3000/recipe');
+         const response = await axios.get('https://recipe-book-ivt5.onrender.com/recipe');
          setMeals(response.data)
           setLoading(false)
          console.log(response);
