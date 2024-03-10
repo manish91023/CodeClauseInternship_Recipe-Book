@@ -20,7 +20,7 @@ const axios = require('axios')
 
 
 app.use(cors({
-    origin:["http://localhost:5173"],
+    origin:["https://65ecbf7baaf1aee157f2693c--celadon-lamington-0dcbd2.netlify.app/"],
     methods:['get','post','DELETE'],
     credentials:true
 }))
