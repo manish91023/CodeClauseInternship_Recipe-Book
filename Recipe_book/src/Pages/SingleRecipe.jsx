@@ -71,7 +71,7 @@ const deletRecipe = async(e)=>{
 
             <div className=' mt-5'>
                 
-                <div className=' mx-20 text-black'>
+                <div className='w-full p-4 text-sm md:text-base'>
                     <h1 className=' font-bold mb-5 '>Ingridents:</h1>
                     {mealData && 
                     <div>
