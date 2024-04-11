@@ -20,7 +20,7 @@ const axios = require('axios')
 
 
 app.use(cors({
-    origin:["https://manishfood.netlify.app"],
+    origin:["https://remarkable-belekoy-3950f2.netlify.app"],
     methods:['get','post','DELETE','PUT'],
     credentials:true
 }))
