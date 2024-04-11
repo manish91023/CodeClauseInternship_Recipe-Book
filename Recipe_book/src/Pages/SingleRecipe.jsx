@@ -1,8 +1,15 @@
 import Axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import GetUserId from '../Hooks/GetUserId';
+
 
 const SingleRecipe = () => {
+
+    const userId = GetUserId();
+    const  [recipeCreator,setRecipeCerator]=useState();
+
+
     const [loading,setLoading] = useState(false)
     const [mealData,setMealData]=useState();
     const {id}=useParams();
@@ -10,15 +17,17 @@ const SingleRecipe = () => {
     useEffect(()=>{
         setLoading(true)
         const fetchData = async(id)=>{
-            const response= await Axios.get(`https://recipe-book-ivt5.onrender.com/recipe/${id}`);
-            console.log(response.data)
+            const response= await Axios.get(`http://localhost:3000/recipe/${id}`);
+            //console.log(response.data)
             setMealData(response.data)
+            setRecipeCerator(response.data.userOwner)
+           
             setLoading(false)
         }
         fetchData(id)
     },[id])
 
-   
+
 const deletRecipe = async(e)=>{
     e.preventDefault();
     e.stopPropagation();
@@ -47,12 +56,12 @@ const deletRecipe = async(e)=>{
             return <h1 className=' text-center my-20'>processing please wait....</h1>
         }
   return (
-    <div className='w-[100%] m-h-[100vh] cursor-pointer bg-gradient-to-r from-violet-200 to-indigo-600 md:flex flex-col justify-center overflow-auto'>
-        <div className=' w-[100%] h-[100vh] px-10 md:flex md:flex-col justify-center pt-5'>
-            {mealData && 
+    <div className='w-[100%] m-h-[100vh]  cursor-pointer bg-[#2d2013] text-white md:flex flex-col justify-center overflow-auto'>
+        <div className=' w-[100%] h-[100vh] px-2 md:px-10 md:flex md:flex-col justify-center pt-5'>
+            {mealData &&  (
             
             
-            <div className=' w-[100%] md:w-[500px]  mx-auto  '>
+               <div className=' w-[100%] md:w-[500px]  mx-auto  '>
                         <img src={mealData.imageUrl} alt={mealData.name} className=' pt-5 w-[300px] md:w-[500px] h-[200px]  object-cover   '/>
 
                     <div>
@@ -62,12 +71,18 @@ const deletRecipe = async(e)=>{
                     <div>
                         <hr  className='w-[100%] h-[5px] bg-black'/>
                     </div>
-                    <button className=' bg-orange-500 absolute top-24'  onClick={deletRecipe}>Delete</button>
+                    {userId==recipeCreator &&
+                        <>
+
+                            <button className=' bg-orange-500 absolute top-24'  onClick={deletRecipe}>Delete</button>
+                            <Link to={`/recipe/edit/${id}`}> <button className=' bg-yellow-500 absolute top-24 right-[50%]' >Edit</button></Link>
+                        </>
+                    }
                 </div>
             
-                
+        
             
-            }
+            )}
 
             <div className=' mt-5'>
                 

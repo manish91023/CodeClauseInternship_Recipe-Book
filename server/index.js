@@ -21,7 +21,7 @@ const axios = require('axios')
 
 app.use(cors({
     origin:["https://manishfood.netlify.app"],
-    methods:['get','post','DELETE'],
+    methods:['get','post','DELETE','PUT'],
     credentials:true
 }))
 app.use(express.urlencoded({extended:true}))
@@ -56,7 +56,7 @@ app.post('/register',async(req,res)=>{
 app.post('/login',async(req,res)=>{
     const {email,password}= req.body;
    // console.log(email,password)
-    const user= await UserModel.findOne({email:email})
+    const user= await UserModel.findOne({email:email}) 
     if(user){
         bcrypt.compare(password,user.password,(err,response)=>{
             if(err){
@@ -109,7 +109,7 @@ app.delete('/recipe/:id',async(req,res)=>{
     
     try {
         const id = req.params;
-       // console.log(id)
+       // console.log(id) 
         const data = await Recipe.findByIdAndDelete(id.id);
         //console.log(data)
         res.status(200).send("thanks its made delete request")
@@ -133,7 +133,19 @@ app.get('/recipe/:id',async(req,res)=>{
     }
 })
 
-
+app.put('/recipe/edit/:id',async(req,res)=>{
+    const recipeId=req.params;
+    console.log(recipeId)
+    // console.log(req.body)
+    try {
+        const data = await  Recipe.findByIdAndUpdate(recipeId.id ,{...req.body});
+        console.log(data)
+        res.send(data)
+    } catch (error) {
+        console.log("error during edit the recipe detaild ",error)
+        res.status(500).send(error)
+    }
+})
 
 
 

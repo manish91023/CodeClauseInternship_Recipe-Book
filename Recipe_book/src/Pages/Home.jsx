@@ -41,7 +41,6 @@ const Home = () => {
        <div className=' flex flex-wrap justify-center mt-3 '>
       {meals && meals.map(meal=>(
         <Link key={meal._id} to={`/recipe/${meal._id}`}>
-        
           <Avtar banner={meal.imageUrl} title={meal.name}/>
         </Link>
       ))}

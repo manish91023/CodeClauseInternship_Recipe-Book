@@ -9,6 +9,7 @@ import SingleRecipe from './Pages/SingleRecipe'
 import Create from './Pages/Create'
 import { AuthProvider } from './Places/Components/AuthContext'
 import ProtectedRoute from './Places/Components/protectedRoute'
+import Edit from './Pages/Edit'
 
 function App() {
  
@@ -22,6 +23,7 @@ function App() {
             <Route path='/recipe/home' element={<Home/>}></Route>
             <Route path='/recipe/auth' element={<Authantication/>}></Route>
             <Route path='/recipe/:id' element={<SingleRecipe/>}></Route>
+            <Route path='/recipe/edit/:id' element={<Edit/>}></Route>
             <Route path='/recipe/create' element={
               <ProtectedRoute><Create/></ProtectedRoute>
             }></Route>
