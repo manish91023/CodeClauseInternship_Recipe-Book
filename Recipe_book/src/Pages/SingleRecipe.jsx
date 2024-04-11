@@ -17,7 +17,7 @@ const SingleRecipe = () => {
     useEffect(()=>{
         setLoading(true)
         const fetchData = async(id)=>{
-            const response= await Axios.get(`http://localhost:3000/recipe/${id}`);
+            const response= await Axios.get(`https://recipe-book-ivt5.onrender.com/recipe/${id}`);
             //console.log(response.data)
             setMealData(response.data)
             setRecipeCerator(response.data.userOwner)

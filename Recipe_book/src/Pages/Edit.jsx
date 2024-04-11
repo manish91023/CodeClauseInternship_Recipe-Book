@@ -22,7 +22,7 @@ const Create = () => {
   useEffect(()=>{
     const fetchData=async()=>{
      // console.log(recipeId)
-      const response= await axios.get(`http://localhost:3000/recipe/${recipeId.id}`);
+      const response= await axios.get(`https://recipe-book-ivt5.onrender.com/recipe/${recipeId.id}`);
       //console.log(response) 
       setName(response.data.name)
       setIngradients(response.data.ingredients)
