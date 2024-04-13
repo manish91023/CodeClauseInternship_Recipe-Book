@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import React from 'react'
 import './App.css'
 import Home from './Pages/Home'
-import {Route,Routes ,BrowserRouter} from 'react-router-dom'
+import {Route,Routes ,BrowserRouter, Navigate} from 'react-router-dom'
 import Authantication from './Places/Components/Authantication'
 import Navigation from './Places/Components/Navigation'
 import SingleRecipe from './Pages/SingleRecipe'
@@ -20,6 +20,8 @@ function App() {
       <BrowserRouter>
         <Navigation/>
         <Routes>
+
+            <Route path='/' element={<Navigate to="/recipe/home" />}></Route>
             <Route path='/recipe/home' element={<Home/>}></Route>
             <Route path='/recipe/auth' element={<Authantication/>}></Route>
             <Route path='/recipe/:id' element={<SingleRecipe/>}></Route>
